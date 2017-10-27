@@ -89,16 +89,31 @@ def approximate_and_return(input_list, bits):
     value_index = None
     levels = generate_float_table(bits)
 
+    # print("Input List Size ", input_list.size)
+    # print("Input List Shape ", input_list.shape)
+    flag = 0
+    if input_list.ndim == 2:
+        flag = 1
+        x_shape = input_list.shape[0]
+        y_shape = input_list.shape[1]
+        input_list = np.reshape((input_list), x_shape*y_shape)
+
     for i in range(input_list.size):
         minimum_difference = 1
         value = input_list[i]
         for k in range(0, len(levels)):
-            temp_difference = value -   levels[k]
-            if abs(temp_difference) < minimum_difference:
+            temp_difference = value - levels[k]
+            if (abs(temp_difference) < minimum_difference):
                 minimum_difference = abs(temp_difference)
                 value_index = k
         input_list[i] = levels[value_index]
 
+    if input_list.ndim and flag:
+        input_list = np.reshape((input_list), (x_shape, y_shape))
+        flag = 0
+
+    # print("Output List Size ", input_list.size)
+    # print("Output List Shape ", input_list.shape)
     # print("Value Index:", value_index)
     # print("Minimum Difference:", minimum_difference)
     return input_list
@@ -124,8 +139,22 @@ def approx_gradients_step(param_grad, bits, conversion_flag):
 
     # print("Printing Original Bias")
     # print(layer1_bias)
-    layer1_bias = approximate_and_return(layer1_bias, bits)
-    param_grad[1]['b'] = layer1_bias
+    param_grad[1]['b'] = approximate_and_return(layer1_bias, bits)
+    param_grad[2]['b'] = approximate_and_return(layer2_bias, bits)
+    param_grad[3]['b'] = approximate_and_return(layer3_bias, bits)
+    param_grad[4]['b'] = approximate_and_return(layer4_bias, bits)
+    param_grad[5]['b'] = approximate_and_return(layer5_bias, bits)
+    param_grad[6]['b'] = approximate_and_return(layer6_bias, bits)
+    param_grad[7]['b'] = approximate_and_return(layer7_bias, bits)
+
+    # bits = 9
+    param_grad[1]['w'] = approximate_and_return(layer1_weights, bits)
+    param_grad[2]['w'] = approximate_and_return(layer2_weights, bits)
+    param_grad[3]['w'] = approximate_and_return(layer3_weights, bits)
+    param_grad[4]['w'] = approximate_and_return(layer4_weights, bits)
+    param_grad[5]['w'] = approximate_and_return(layer5_weights, bits)
+    param_grad[6]['w'] = approximate_and_return(layer6_weights, bits)
+    param_grad[7]['w'] = approximate_and_return(layer7_weights, bits)
     # print("Printing Approximate Bias")
     # print(layer1_bias)
 
@@ -156,11 +185,11 @@ def main():
   b_lr = 2
 
   test_interval = 100
-  display_interval = 10
+  display_interval = 5
   snapshot = 10000
   snapshot2 = 30
-  max_iter = 10000
-  # max_iter = 500
+  # max_iter = 10000
+  max_iter = 2000
 
   bits = 10
   # initialize parameters
