@@ -1,0 +1,306 @@
+hdd@shardblade:~/Downloads/10601b/hw6/python$ python testLeNet.py 
+Loading MNIST Dataset...
+MNIST Dataset Loading Complete!
+
+Initializing Parameters...
+Initilization Complete!
+
+Training Started. Printing report on training data every 100 steps.
+Printing report on test data every 100 steps.
+
+training_cost = 0.547447 training_accuracy = 0.859375 current_step = 100
+test_cost = 0.389594 test_accuracy = 0.879600 current_step = 100
+
+training_cost = 0.285191 training_accuracy = 0.890625 current_step = 200
+test_cost = 0.185589 test_accuracy = 0.944800 current_step = 200
+
+training_cost = 0.219075 training_accuracy = 0.921875 current_step = 300
+test_cost = 0.133132 test_accuracy = 0.960000 current_step = 300
+
+training_cost = 0.082121 training_accuracy = 0.968750 current_step = 400
+test_cost = 0.105730 test_accuracy = 0.967800 current_step = 400
+
+training_cost = 0.090520 training_accuracy = 0.968750 current_step = 500
+test_cost = 0.112876 test_accuracy = 0.965100 current_step = 500
+
+training_cost = 0.177914 training_accuracy = 0.953125 current_step = 600
+test_cost = 0.081623 test_accuracy = 0.974300 current_step = 600
+
+training_cost = 0.050598 training_accuracy = 1.000000 current_step = 700
+test_cost = 0.094588 test_accuracy = 0.969900 current_step = 700
+
+training_cost = 0.070856 training_accuracy = 0.968750 current_step = 800
+test_cost = 0.073511 test_accuracy = 0.976700 current_step = 800
+
+training_cost = 0.013380 training_accuracy = 1.000000 current_step = 900
+test_cost = 0.066469 test_accuracy = 0.978300 current_step = 900
+
+training_cost = 0.074655 training_accuracy = 0.953125 current_step = 1000
+test_cost = 0.067702 test_accuracy = 0.978300 current_step = 1000
+
+training_cost = 0.012481 training_accuracy = 1.000000 current_step = 1100
+test_cost = 0.066319 test_accuracy = 0.979200 current_step = 1100
+
+training_cost = 0.034502 training_accuracy = 0.984375 current_step = 1200
+test_cost = 0.050746 test_accuracy = 0.983600 current_step = 1200
+
+training_cost = 0.131222 training_accuracy = 0.937500 current_step = 1300
+test_cost = 0.050171 test_accuracy = 0.983400 current_step = 1300
+
+training_cost = 0.015873 training_accuracy = 1.000000 current_step = 1400
+test_cost = 0.052432 test_accuracy = 0.982300 current_step = 1400
+
+training_cost = 0.020596 training_accuracy = 1.000000 current_step = 1500
+test_cost = 0.051476 test_accuracy = 0.982500 current_step = 1500
+
+training_cost = 0.035804 training_accuracy = 0.984375 current_step = 1600
+test_cost = 0.049572 test_accuracy = 0.983200 current_step = 1600
+
+training_cost = 0.030149 training_accuracy = 1.000000 current_step = 1700
+test_cost = 0.051198 test_accuracy = 0.984100 current_step = 1700
+
+training_cost = 0.068271 training_accuracy = 0.968750 current_step = 1800
+test_cost = 0.047991 test_accuracy = 0.985500 current_step = 1800
+
+training_cost = 0.037255 training_accuracy = 0.984375 current_step = 1900
+test_cost = 0.043345 test_accuracy = 0.986500 current_step = 1900
+
+training_cost = 0.021542 training_accuracy = 1.000000 current_step = 2000
+test_cost = 0.044483 test_accuracy = 0.985700 current_step = 2000
+
+training_cost = 0.024333 training_accuracy = 0.984375 current_step = 2100
+test_cost = 0.042753 test_accuracy = 0.985800 current_step = 2100
+
+training_cost = 0.022805 training_accuracy = 0.984375 current_step = 2200
+test_cost = 0.039966 test_accuracy = 0.986800 current_step = 2200
+
+training_cost = 0.065039 training_accuracy = 0.984375 current_step = 2300
+ test_cost = 0.039134 test_accuracy = 0.988300 current_step = 2300
+
+training_cost = 0.052951 training_accuracy = 0.968750 current_step = 2400
+test_cost = 0.046144 test_accuracy = 0.985200 current_step = 2400
+
+training_cost = 0.007595 training_accuracy = 1.000000 current_step = 2500
+test_cost = 0.047294 test_accuracy = 0.984900 current_step = 2500
+
+training_cost = 0.029556 training_accuracy = 1.000000 current_step = 2600
+test_cost = 0.035546 test_accuracy = 0.988200 current_step = 2600
+
+training_cost = 0.013162 training_accuracy = 1.000000 current_step = 2700
+test_cost = 0.035018 test_accuracy = 0.988900 current_step = 2700
+
+training_cost = 0.015179 training_accuracy = 1.000000 current_step = 2800
+test_cost = 0.034994 test_accuracy = 0.988800 current_step = 2800
+
+training_cost = 0.024593 training_accuracy = 0.984375 current_step = 2900
+test_cost = 0.034623 test_accuracy = 0.988600 current_step = 2900
+
+training_cost = 0.038244 training_accuracy = 0.984375 current_step = 3000
+test_cost = 0.036537 test_accuracy = 0.988000 current_step = 3000
+
+	training_cost = 0.010695 training_accuracy = 1.000000 current_step = 3100
+test_cost = 0.038178 test_accuracy = 0.987600 current_step = 3100
+
+training_cost = 0.046817 training_accuracy = 0.984375 current_step = 3200
+test_cost = 0.035875 test_accuracy = 0.988500 current_step = 3200
+
+training_cost = 0.003304 training_accuracy = 1.000000 current_step = 3300
+test_cost = 0.035471 test_accuracy = 0.989600 current_step = 3300
+
+training_cost = 0.019633 training_accuracy = 0.984375 current_step = 3400
+test_cost = 0.036167 test_accuracy = 0.989100 current_step = 3400
+
+training_cost = 0.006079 training_accuracy = 1.000000 current_step = 3500
+test_cost = 0.034520 test_accuracy = 0.988900 current_step = 3500
+
+training_cost = 0.027404 training_accuracy = 0.984375 current_step = 3600
+test_cost = 0.036231 test_accuracy = 0.988000 current_step = 3600
+
+training_cost = 0.018121 training_accuracy = 1.000000 current_step = 3700
+test_cost = 0.038468 test_accuracy = 0.987400 current_step = 3700
+
+training_cost = 0.016842 training_accuracy = 0.984375 current_step = 3800
+test_cost = 0.033466 test_accuracy = 0.989200 current_step = 3800
+
+training_cost = 0.059533 training_accuracy = 0.984375 current_step = 3900
+test_cost = 0.038971 test_accuracy = 0.986700 current_step = 3900
+
+training_cost = 0.008926 training_accuracy = 1.000000 current_step = 4000
+test_cost = 0.033295 test_accuracy = 0.989000 current_step = 4000
+
+training_cost = 0.040515 training_accuracy = 0.968750 current_step = 4100
+test_cost = 0.037120 test_accuracy = 0.988600 current_step = 4100
+
+training_cost = 0.004045 training_accuracy = 1.000000 current_step = 4200
+test_cost = 0.034542 test_accuracy = 0.988500 current_step = 4200
+
+training_cost = 0.004973 training_accuracy = 1.000000 current_step = 4300
+test_cost = 0.030622 test_accuracy = 0.989400 current_step = 4300
+
+training_cost = 0.013424 training_accuracy = 1.000000 current_step = 4400
+test_cost = 0.035877 test_accuracy = 0.987500 current_step = 4400
+
+training_cost = 0.009659 training_accuracy = 1.000000 current_step = 4500
+test_cost = 0.037311 test_accuracy = 0.987500 current_step = 4500
+
+training_cost = 0.002517 training_accuracy = 1.000000 current_step = 4600
+test_cost = 0.035750 test_accuracy = 0.988900 current_step = 4600
+
+training_cost = 0.021302 training_accuracy = 0.984375 current_step = 4700
+test_cost = 0.038802 test_accuracy = 0.986900 current_step = 4700
+
+training_cost = 0.017005 training_accuracy = 0.984375 current_step = 4800
+test_cost = 0.033454 test_accuracy = 0.988900 current_step = 4800
+
+training_cost = 0.002484 training_accuracy = 1.000000 current_step = 4900
+test_cost = 0.036348 test_accuracy = 0.988700 current_step = 4900
+
+training_cost = 0.010458 training_accuracy = 1.000000 current_step = 5000
+test_cost = 0.035438 test_accuracy = 0.989100 current_step = 5000
+
+training_cost = 0.033242 training_accuracy = 0.984375 current_step = 5100
+test_cost = 0.030764 test_accuracy = 0.990400 current_step = 5100
+
+training_cost = 0.022273 training_accuracy = 1.000000 current_step = 5200
+test_cost = 0.032394 test_accuracy = 0.990600 current_step = 5200
+
+training_cost = 0.004769 training_accuracy = 1.000000 current_step = 5300
+test_cost = 0.027897 test_accuracy = 0.991000 current_step = 5300
+
+training_cost = 0.022393 training_accuracy = 0.984375 current_step = 5400
+test_cost = 0.030217 test_accuracy = 0.989800 current_step = 5400
+
+training_cost = 0.077209 training_accuracy = 0.984375 current_step = 5500
+test_cost = 0.034905 test_accuracy = 0.987700 current_step = 5500
+
+training_cost = 0.024998 training_accuracy = 1.000000 current_step = 5600
+test_cost = 0.030481 test_accuracy = 0.989200 current_step = 5600
+
+training_cost = 0.056176 training_accuracy = 0.984375 current_step = 5700
+test_cost = 0.031494 test_accuracy = 0.989000 current_step = 5700
+
+training_cost = 0.013049 training_accuracy = 1.000000 current_step = 5800
+test_cost = 0.034596 test_accuracy = 0.989000 current_step = 5800
+
+training_cost = 0.002185 training_accuracy = 1.000000 current_step = 5900
+test_cost = 0.026920 test_accuracy = 0.991400 current_step = 5900
+
+training_cost = 0.007583 training_accuracy = 1.000000 current_step = 6000
+test_cost = 0.035660 test_accuracy = 0.988900 current_step = 6000
+
+training_cost = 0.000258 training_accuracy = 1.000000 current_step = 6100
+test_cost = 0.027916 test_accuracy = 0.990800 current_step = 6100
+
+training_cost = 0.107804 training_accuracy = 0.968750 current_step = 6200
+test_cost = 0.032332 test_accuracy = 0.989100 current_step = 6200
+
+training_cost = 0.005782 training_accuracy = 1.000000 current_step = 6300
+test_cost = 0.029518 test_accuracy = 0.990500 current_step = 6300
+
+training_cost = 0.004532 training_accuracy = 1.000000 current_step = 6400
+test_cost = 0.029703 test_accuracy = 0.989700 current_step = 6400
+
+training_cost = 0.017154 training_accuracy = 1.000000 current_step = 6500
+test_cost = 0.033196 test_accuracy = 0.988900 current_step = 6500
+
+training_cost = 0.002919 training_accuracy = 1.000000 current_step = 6600
+test_cost = 0.033268 test_accuracy = 0.988700 current_step = 6600
+
+training_cost = 0.016670 training_accuracy = 0.984375 current_step = 6700
+test_cost = 0.030826 test_accuracy = 0.989600 current_step = 6700
+
+training_cost = 0.006431 training_accuracy = 1.000000 current_step = 6800
+test_cost = 0.028103 test_accuracy = 0.990000 current_step = 6800
+
+training_cost = 0.001206 training_accuracy = 1.000000 current_step = 6900
+test_cost = 0.030570 test_accuracy = 0.989100 current_step = 6900
+
+training_cost = 0.012093 training_accuracy = 1.000000 current_step = 7000
+test_cost = 0.028548 test_accuracy = 0.990800 current_step = 7000
+
+training_cost = 0.005734 training_accuracy = 1.000000 current_step = 7100
+test_cost = 0.027546 test_accuracy = 0.990800 current_step = 7100
+
+training_cost = 0.002580 training_accuracy = 1.000000 current_step = 7200
+test_cost = 0.028829 test_accuracy = 0.990500 current_step = 7200
+
+training_cost = 0.004052 training_accuracy = 1.000000 current_step = 7300
+test_cost = 0.038374 test_accuracy = 0.988100 current_step = 7300
+
+training_cost = 0.014414 training_accuracy = 0.984375 current_step = 7400
+test_cost = 0.029311 test_accuracy = 0.989700 current_step = 7400
+
+training_cost = 0.010735 training_accuracy = 1.000000 current_step = 7600
+test_cost = 0.029833 test_accuracy = 0.989900 current_step = 7600
+
+training_cost = 0.012756 training_accuracy = 1.000000 current_step = 7700
+test_cost = 0.028224 test_accuracy = 0.990300 current_step = 7700
+
+training_cost = 0.006402 training_accuracy = 1.000000 current_step = 7800
+test_cost = 0.028026 test_accuracy = 0.991200 current_step = 7800
+
+training_cost = 0.006189 training_accuracy = 1.000000 current_step = 7900
+test_cost = 0.028334 test_accuracy = 0.991200 current_step = 7900
+
+training_cost = 0.010682 training_accuracy = 1.000000 current_step = 8000
+test_cost = 0.027429 test_accuracy = 0.991000 current_step = 8000
+
+training_cost = 0.006338 training_accuracy = 1.000000 current_step = 8100
+test_cost = 0.029487 test_accuracy = 0.989600 current_step = 8100
+
+training_cost = 0.003112 training_accuracy = 1.000000 current_step = 8200
+test_cost = 0.034290 test_accuracy = 0.989200 current_step = 8200
+
+training_cost = 0.021244 training_accuracy = 0.984375 current_step = 8300
+test_cost = 0.028853 test_accuracy = 0.989600 current_step = 8300
+
+training_cost = 0.012022 training_accuracy = 1.000000 current_step = 8400
+test_cost = 0.029975 test_accuracy = 0.990500 current_step = 8400
+
+training_cost = 0.001163 training_accuracy = 1.000000 current_step = 8500
+test_cost = 0.028601 test_accuracy = 0.990500 current_step = 8500
+
+training_cost = 0.002894 training_accuracy = 1.000000 current_step = 8600
+test_cost = 0.030408 test_accuracy = 0.988600 current_step = 8600
+
+training_cost = 0.002221 training_accuracy = 1.000000 current_step = 8700
+test_cost = 0.028943 test_accuracy = 0.990700 current_step = 8700
+
+training_cost = 0.033815 training_accuracy = 0.984375 current_step = 8800
+test_cost = 0.028989 test_accuracy = 0.990300 current_step = 8800
+
+training_cost = 0.021572 training_accuracy = 0.984375 current_step = 8900
+test_cost = 0.028818 test_accuracy = 0.990000 current_step = 8900
+
+training_cost = 0.017697 training_accuracy = 0.984375 current_step = 9000
+test_cost = 0.030741 test_accuracy = 0.990200 current_step = 9000
+
+training_cost = 0.002033 training_accuracy = 1.000000 current_step = 9100
+test_cost = 0.026025 test_accuracy = 0.990800 current_step = 9100
+
+training_cost = 0.019804 training_accuracy = 0.984375 current_step = 9200
+test_cost = 0.031639 test_accuracy = 0.988700 current_step = 9200
+
+training_cost = 0.008219 training_accuracy = 1.000000 current_step = 9300
+test_cost = 0.028934 test_accuracy = 0.990700 current_step = 9300
+
+training_cost = 0.030127 training_accuracy = 0.984375 current_step = 9400
+test_cost = 0.028394 test_accuracy = 0.989800 current_step = 9400
+
+training_cost = 0.002004 training_accuracy = 1.000000 current_step = 9500
+test_cost = 0.025694 test_accuracy = 0.990800 current_step = 9500
+
+training_cost = 0.022927 training_accuracy = 0.984375 current_step = 9600
+test_cost = 0.026767 test_accuracy = 0.990100 current_step = 9600
+
+training_cost = 0.092176 training_accuracy = 0.968750 current_step = 9700
+test_cost = 0.029095 test_accuracy = 0.990100 current_step = 9700
+
+training_cost = 0.002717 training_accuracy = 1.000000 current_step = 9800
+test_cost = 0.027278 test_accuracy = 0.990400 current_step = 9800
+
+training_cost = 0.000963 training_accuracy = 1.000000 current_step = 9900
+test_cost = 0.027903 test_accuracy = 0.990000 current_step = 9900
+
+training_cost = 0.031777 training_accuracy = 0.984375 current_step = 10000
+test_cost = 0.027384 test_accuracy = 0.990300 current_step = 10000
