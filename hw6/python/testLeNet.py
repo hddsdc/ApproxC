@@ -57,7 +57,7 @@ def get_lenet():
 
   layers[6] = {}
   layers[6]['type'] = 'IP'
-  layers[6]['num'] = 500
+  layers[6]['num'] = 50
   layers[6]['init_type'] = 'uniform'
 
   layers[7] = {}
