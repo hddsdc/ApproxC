@@ -191,10 +191,10 @@ def main():
    
   
   # HOOK BEGIN: Change the level of approximation here for Inputs
-  input_bits  = 2
-  xtrain = approximate_and_return(xtrain, input_bits, INPUT)
-  xval   = approximate_and_return(xval, input_bits, INPUT)
-  xtest  = approximate_and_return(xtest, input_bits, INPUT)
+  # input_bits  = 2
+  # xtrain = approximate_and_return(xtrain, input_bits, INPUT)
+  # xval   = approximate_and_return(xval, input_bits, INPUT)
+  # xtest  = approximate_and_return(xtest, input_bits, INPUT)
   # HOOK END: Change the level of approximation here for Inputs
   
   #print("xvalidate approximated")
