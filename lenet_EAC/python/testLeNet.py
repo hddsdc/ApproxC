@@ -8,6 +8,9 @@ import pickle
 import copy
 import random
 
+INPUT = 1
+WEIGHT = 0
+
 def get_lenet():
   """Define LeNet
 
@@ -83,11 +86,26 @@ def generate_float_table(bits):
 
     return levels
 
+def generate_float_table_positive(bits):
+    total_levels = 1 << (bits)
+    # print(total_levels)
+    levels = []
+    # levels.append("Print")
+    for i in range(0,total_levels):
+        value = 1.0*(i) / (total_levels)
+        levels.append(value)
+        # print(levels[i])
 
-def approximate_and_return(input_list, bits):
+    return levels
+
+
+def approximate_and_return(input_list, bits, input_flag):
 
     value_index = None
-    levels = generate_float_table(bits)
+    if input_flag:
+        levels = generate_float_table_positive(bits)
+    else:
+        levels = generate_float_table(bits)
 
     # print("Input List Size ", input_list.size)
     # print("Input List Shape ", input_list.shape)
@@ -99,7 +117,7 @@ def approximate_and_return(input_list, bits):
         input_list = np.reshape((input_list), x_shape*y_shape)
 
     for i in range(input_list.size):
-        minimum_difference = 1
+        minimum_difference = 3
         value = input_list[i]
         for k in range(0, len(levels)):
             temp_difference = value - levels[k]
@@ -139,22 +157,22 @@ def approx_gradients_step(param_grad, bits, conversion_flag):
 
     # print("Printing Original Bias")
     # print(layer1_bias)
-    param_grad[1]['b'] = approximate_and_return(layer1_bias, bits)
-    param_grad[2]['b'] = approximate_and_return(layer2_bias, bits)
-    param_grad[3]['b'] = approximate_and_return(layer3_bias, bits)
-    param_grad[4]['b'] = approximate_and_return(layer4_bias, bits)
-    param_grad[5]['b'] = approximate_and_return(layer5_bias, bits)
-    param_grad[6]['b'] = approximate_and_return(layer6_bias, bits)
-    param_grad[7]['b'] = approximate_and_return(layer7_bias, bits)
+    param_grad[1]['b'] = approximate_and_return(layer1_bias, bits, WEIGHT)
+    param_grad[2]['b'] = approximate_and_return(layer2_bias, bits, WEIGHT)
+    param_grad[3]['b'] = approximate_and_return(layer3_bias, bits, WEIGHT)
+    param_grad[4]['b'] = approximate_and_return(layer4_bias, bits, WEIGHT)
+    param_grad[5]['b'] = approximate_and_return(layer5_bias, bits, WEIGHT)
+    param_grad[6]['b'] = approximate_and_return(layer6_bias, bits, WEIGHT)
+    param_grad[7]['b'] = approximate_and_return(layer7_bias, bits, WEIGHT)
 
     # bits = 9
-    param_grad[1]['w'] = approximate_and_return(layer1_weights, bits)
-    param_grad[2]['w'] = approximate_and_return(layer2_weights, bits)
-    param_grad[3]['w'] = approximate_and_return(layer3_weights, bits)
-    param_grad[4]['w'] = approximate_and_return(layer4_weights, bits)
-    param_grad[5]['w'] = approximate_and_return(layer5_weights, bits)
-    param_grad[6]['w'] = approximate_and_return(layer6_weights, bits)
-    param_grad[7]['w'] = approximate_and_return(layer7_weights, bits)
+    param_grad[1]['w'] = approximate_and_return(layer1_weights, bits, WEIGHT)
+    param_grad[2]['w'] = approximate_and_return(layer2_weights, bits, WEIGHT)
+    param_grad[3]['w'] = approximate_and_return(layer3_weights, bits, WEIGHT)
+    param_grad[4]['w'] = approximate_and_return(layer4_weights, bits, WEIGHT)
+    param_grad[5]['w'] = approximate_and_return(layer5_weights, bits, WEIGHT)
+    param_grad[6]['w'] = approximate_and_return(layer6_weights, bits, WEIGHT)
+    param_grad[7]['w'] = approximate_and_return(layer7_weights, bits, WEIGHT)
     # print("Printing Approximate Bias")
     # print(layer1_bias)
 
@@ -165,9 +183,22 @@ def main():
 
   # load data
   # change the following value to true to load the entire dataset
-  fullset = True
+  bits = 10
+
+  fullset = False
   print("Loading MNIST Dataset...")
   xtrain, ytrain, xval, yval, xtest, ytest = cnn_lenet.load_mnist(fullset)
+   
+  
+  # HOOK BEGIN: Change the level of approximation here for Inputs
+  input_bits  = 2
+  xtrain = approximate_and_return(xtrain, input_bits, INPUT)
+  xval   = approximate_and_return(xval, input_bits, INPUT)
+  xtest  = approximate_and_return(xtest, input_bits, INPUT)
+  # HOOK END: Change the level of approximation here for Inputs
+  
+  #print("xvalidate approximated")
+  #print(xval[:,0])
   print("MNIST Dataset Loading Complete!\n")
 
   xtrain = np.hstack([xtrain, xval])
@@ -191,7 +222,6 @@ def main():
   # max_iter = 10000
   max_iter = 2000
 
-  bits = 10
   # initialize parameters
   print("Initializing Parameters...")
   params = cnn_lenet.init_convnet(layers)
@@ -233,7 +263,7 @@ def main():
 
     # print("Printing Parameter gradient")
     # print(param_grad)
-    approx_gradients_step(param_grad, bits, True)
+    #approx_gradients_step(param_grad, bits, True)
     # print("Ending Parameter gradient")
 
     # approx_gradients = param_grad
