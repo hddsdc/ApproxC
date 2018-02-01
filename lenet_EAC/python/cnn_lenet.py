@@ -5,7 +5,6 @@ import scipy.io
 import copy
 import matplotlib.pyplot as plt
 import matplotlib as mpl
-import sys
 
 def load_mnist(fullset=True):
   """Load mnist dataset
@@ -763,10 +762,7 @@ def mlrloss(wb, X, y, K, prediction):
   # This rescales so that all values are negative, hence, no overflow
   # problems with the exp operation (a single +inf can blow things up)
   activation -= np.max(activation, axis=0)
-  # Sigmoid Calculation Approximation Performed Here
-  # activation = approximate_and_return(activation, 4, 2)  
-  #print("After ")
-  #print(activation)
+  activation = np.exp(activation)
 
   # Convert to probabilities by normalizing
   prob = activation / np.sum(activation, axis=0)
@@ -826,89 +822,3 @@ def sgd_momentum(w_rate, b_rate, mu, decay, params, param_winc, param_grad):
   assert len(params_) == len(param_grad), 'params_ does not have the right length (error at sgd momentum)'
   assert len(param_winc_) == len(param_grad), 'param_winc_ does not have the right length (error at sgd momentum)'
   return params_, param_winc_
-
-
-## Repeat Functions for Approximation ## 
-def generate_float_table(bits):
-    total_levels = 1 << (bits-1)
-    # print(total_levels)
-    levels = []
-    # levels.append("Print")
-    for i in range(0,2*total_levels):
-        value = 1.0*(i/2) / (total_levels)
-        if (i % 2):
-            value = -value
-        levels.append(value)
-        # print(levels[i])
-
-    return levels
-
-def generate_float_table_positive(bits):
-    total_levels = 1 << (bits)
-    # print(total_levels)
-    levels = []
-    # levels.append("Print")
-    for i in range(0,total_levels):
-        value = 1.0*(i) / (total_levels)
-        levels.append(value)
-        # print(levels[i])
-
-    return levels
-
-
-def generate_float_table_negative(bits):
-    total_levels = 1 << (bits)
-    # print(total_levels)
-    levels = []
-    # levels.append("Print")
-    for i in range(0,total_levels):
-        value = -1.0*(i) / (total_levels)
-        levels.append(value)
-        # print(levels[i])
-
-    return levels
-
-
-def approximate_and_return(input_list, bits, input_flag):
-    value_index = None
-    if input_flag == 1:
-        levels = generate_float_table_positive(bits)
-    elif input_flag == 0:
-        levels = generate_float_table(bits)
-    else: 
-        levels = generate_float_table_negative(bits)
-
-    # print("Input List Size ", input_list.size)
-    # print("Input List Shape ", input_list.shape)
-    flag = 0
-    if input_list.ndim == 2:
-        flag = 1
-        x_shape = input_list.shape[0]
-        y_shape = input_list.shape[1]
-        input_list = np.reshape((input_list), x_shape*y_shape)
-
-    for i in range(input_list.size):
-        minimum_difference = sys.float_info.max 
-        value = input_list[i]
-        for k in range(0, len(levels)):
-            temp_difference = value - levels[k]
-            #print("----------")
-            #print(value)
-            #print(levels[k])
-            #print(temp_difference)
-            #print("----------")
-            if (abs(temp_difference) < minimum_difference):
-                minimum_difference = abs(temp_difference)
-                value_index = k
-        input_list[i] = levels[value_index]
-
-    if input_list.ndim and flag:
-        input_list = np.reshape((input_list), (x_shape, y_shape))
-        flag = 0
-
-    # print("Output List Size ", input_list.size)
-    # print("Output List Shape ", input_list.shape)
-    # print("Value Index:", value_index)
-    # print("Minimum Difference:", minimum_difference)
-    return input_list
-
