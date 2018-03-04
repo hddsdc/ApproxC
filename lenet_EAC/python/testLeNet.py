@@ -27,9 +27,9 @@ def get_lenet():
   layers = {}
   layers[1] = {}
   layers[1]['type'] = 'DATA'
-  layers[1]['height'] = 28
-  layers[1]['width'] = 28
-  layers[1]['channel'] = 1
+  layers[1]['height'] = 32
+  layers[1]['width'] = 32
+  layers[1]['channel'] = 3
   layers[1]['batch_size'] = 64
 
   layers[2] = {}
@@ -247,8 +247,10 @@ def main():
   fullset = True
   # print("Loading MNIST Dataset...")
 
-  print("Loading MNIST Dataset...")
-  xtrain, ytrain, xval, yval, xtest, ytest = cnn_lenet.load_mnist(fullset)
+  #print("Loading MNIST Dataset...")
+  #xtrain, ytrain, xval, yval, xtest, ytest = cnn_lenet.load_mnist(fullset)
+  print("Loading CIFAR Dataset...")
+  xtrain, ytrain, xval, yval, xtest, ytest = cnn_lenet.load_cifar(fullset)
 
   # HOOK BEGIN: Change the level of approximation here for Inputs
   # input_bits  = 2
@@ -259,11 +261,23 @@ def main():
 
   #print("xvalidate approximated")
   #print(xval[:,0])
-  print("MNIST Dataset Loading Complete!\n")
+  
+  
+  #print("MNIST Dataset Loading Complete!\n")
+  
+ # print("in Main")
+ # print(xtrain.shape)
+ # print(xval.shape)
 
   xtrain = np.hstack([xtrain, xval])
   ytrain = np.hstack([ytrain, yval])
   m_train = xtrain.shape[1]
+
+ # print(xtrain.shape)
+ # print(ytrain.shape)
+ # print(xval.shape)
+ # print(yval.shape)
+ # print(m_train)
 
   # cnn parameters
   batch_size = 64
@@ -279,8 +293,8 @@ def main():
   display_interval = 5
   snapshot = 10000
   snapshot2 = 30
-  # max_iter = 10000
-  max_iter = 2000
+  max_iter = 10000
+  # max_iter = 2000
 
   # initialize parameters
   print("Initializing Parameters...")
@@ -311,6 +325,10 @@ def main():
       random.shuffle(indices)
       continue
     idx = indices[start_idx: end_idx]
+
+    #print(start_idx)
+    #print(end_idx)
+    #print(idx)
 
     [cp, param_grad] = cnn_lenet.conv_net(params,
                                           layers,

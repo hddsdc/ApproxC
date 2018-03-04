@@ -55,6 +55,15 @@ def load_mnist(fullset=True):
   xtrain = xtrain.T
   xtest = xtest.T
   xvalidate = xvalidate.T
+  
+  print(xtrain.shape)
+  print(xtest.shape)
+
+  print(ytrain.shape)
+  print(ytest.shape)
+  
+  print(xvalidate.shape)
+  print(yvalidate.shape)
 
   # create smaller set for testing purposes
   if not fullset:
@@ -66,6 +75,130 @@ def load_mnist(fullset=True):
     yvalidate = yvalidate[0:m_validate_small]
 
   return [xtrain, ytrain, xvalidate, yvalidate, xtest, ytest]
+
+
+def load_cifar(fullset=True):
+  """Load CIFAR dataset
+
+  Args:
+    fullset: whether use full CIFAR or not
+
+  Returns:
+    x: shape = (784, samples)
+    y: shape = (samples,)
+  """
+  cifar_dataset_1 = scipy.io.loadmat(os.path.join('..','cifar_batch_1'))
+  cifar_dataset_2 = scipy.io.loadmat(os.path.join('..','cifar_batch_2'))
+  cifar_dataset_3 = scipy.io.loadmat(os.path.join('..','cifar_batch_3'))
+  cifar_dataset_4 = scipy.io.loadmat(os.path.join('..','cifar_batch_4'))
+  cifar_dataset_5 = scipy.io.loadmat(os.path.join('..','cifar_batch_5'))
+
+  cifar_dicts = [cifar_dataset_1, 
+                 cifar_dataset_2,
+                 cifar_dataset_3,
+                 cifar_dataset_4,
+                 cifar_dataset_5]
+
+  cifar_dataset = {}
+
+  for dict_i in cifar_dicts:
+      for key in dict_i:
+        if key in cifar_dataset:
+            cifar_dataset[key] = np.vstack((cifar_dataset[key], dict_i[key]))
+        else:
+            cifar_dataset[key] = dict_i[key]
+
+
+  cifar_test = scipy.io.loadmat(os.path.join('..','cifar_test'))
+
+  #print(cifar_dataset['labels'].shape)
+  #print(cifar_dataset['data'].shape)
+  #
+  #print(cifar_dataset_1['labels'].shape)
+  #print(cifar_dataset_1['data'].shape)
+  #
+  #print(cifar_dataset_2['labels'].shape)
+  #print(cifar_dataset_2['data'].shape)
+
+  xtrain = np.vstack([cifar_dataset['data'] for i in range(2)])
+  ytrain_i = np.vstack([cifar_dataset['labels'] for i in range(2)]) 
+  y_count = ytrain_i.shape[0]
+  ytrain = ytrain_i.reshape((y_count,))
+
+  xtest = np.vstack([cifar_test['data'] for i in range(2)])
+  ytest_i = np.vstack([cifar_test['labels'] for i in range(2)]) 
+  y_count = ytest_i.shape[0]
+  ytest = ytest_i.reshape((y_count,)) 
+ 
+  # create train and test arrays and labels
+  #xtrain = np.vstack([cifar_dataset['train'+str(i)] for i in range(10)])
+  #xtest = np.vstack([cifar_dataset['test'+str(i)] for i in range(10)])
+  #ytrain = np.hstack([[i for _ in range(cifar_dataset['train'+str(i)].shape[0])]
+  #                    for i in range(10)])
+  #ytest = np.hstack([[i for _ in range(cifar_dataset['test'+str(i)].shape[0])]
+  #                   for i in range(10)])
+
+   
+  #print(xtrain.shape)
+  #print(xtest.shape)
+
+  #print(ytrain.shape)
+  #print(ytest.shape)
+  #print(xtest)
+
+  # normalize
+  xtrain = xtrain.astype(np.double) / 255.0
+  xtest = xtest.astype(np.double) / 255.0
+
+  # random shuffle
+  np.random.seed(100000)
+  train_indices = range(xtrain.shape[0])
+  np.random.shuffle(train_indices)
+  xtrain.take(train_indices, axis=0, out=xtrain)
+  ytrain.take(train_indices, axis=0, out=ytrain)
+
+  test_indices = range(xtest.shape[0])
+  np.random.shuffle(test_indices)
+  xtest.take(test_indices, axis=0, out=xtest)
+  ytest.take(test_indices, axis=0, out=ytest)
+
+  #print_shapes
+
+  # get validation set
+  m_validate = 10000
+  xvalidate = xtrain[0:m_validate, :]
+  yvalidate = ytrain[0:m_validate]
+  xtrain = xtrain[m_validate:, :]
+  ytrain = ytrain[m_validate:]
+  m_train = xtrain.shape[0]
+  m_test = xtest.shape[0]
+
+
+  # transpose feature matrices so columns are instances and rows are features
+  xtrain = xtrain.T
+  xtest = xtest.T
+  xvalidate = xvalidate.T
+  
+  #print(xtrain.shape)
+  #print(xtest.shape)
+
+  #print(ytrain.shape)
+  #print(ytest.shape)
+  #
+  #print(xvalidate.shape)
+  #print(yvalidate.shape)
+
+  # create smaller set for testing purposes
+  if not fullset:
+    m_train_small = m_train/20
+    m_validate_small = m_validate/20
+    xtrain = xtrain[:, 0:m_train_small]
+    ytrain = ytrain[0:m_train_small]
+    xvalidate = xvalidate[:, 0:m_validate_small]
+    yvalidate = yvalidate[0:m_validate_small]
+
+  return [xtrain, ytrain, xvalidate, yvalidate, xtest, ytest]
+
 
 
 def init_convnet(layers):
